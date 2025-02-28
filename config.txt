@@ -1,0 +1,6 @@
+# 配置文件：每行 key=value，默认 port=10501, qserver=servertested.txt, core=xray
+port=10501
+qserver=servertested.txt
+testurl=https://fast.com
+core=xray  # 选择核心，可选 xray / sing-box  本功能没实现
+connection=30
