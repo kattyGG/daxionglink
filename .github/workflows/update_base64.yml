@@ -10,7 +10,9 @@ on:
   push:
     branches:
       - main
-
+    paths:
+      - "server_base64.txt"   # 只有当 server_base64.txt 改变时才触发
+      
 jobs:
   update-base64:
     runs-on: ubuntu-latest
