@@ -1,5 +1,8 @@
 name: Update Server Base64
 
+permissions:
+  contents: write
+  
 on:
   schedule:
     - cron: '0 */12 * * *'
