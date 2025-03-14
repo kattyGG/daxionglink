@@ -1,0 +1,12 @@
+{
+  "name": "server-base64-updater",
+  "version": "1.0.0",
+  "description": "Fetch and merge subscription files, deduplicate, base64 encode and update server_base64.txt",
+  "main": "updateServerBase64.js",
+  "scripts": {
+    "update": "node updateServerBase64.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
