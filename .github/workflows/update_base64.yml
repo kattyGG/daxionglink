@@ -1,0 +1,39 @@
+name: Update Server Base64
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+  # 如果需要每次 push 也触发，可取消下面 push 部分注释，不过注意循环提交问题
+  push:
+    branches:
+      - main
+
+jobs:
+  update-base64:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run update script
+        run: npm run update
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add server_base64.txt
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Update server_base64.txt [skip ci]"
+            git push
+          else
+            echo "没有变化，无需提交。"
+          fi
