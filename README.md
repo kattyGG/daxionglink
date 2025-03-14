@@ -33,7 +33,8 @@ daxionglink.exe q
 ```
 在10501端口创建代理服务器，可使用浏览器插件链接或者支持 socket5 代理的软件链接。
 可以在config.txt 设置相关内容。
-server.txt 本文件会24-48小时在线更新，可自行更新。下载替换旧的。
+server_base64.txt 12小时更新一次，包含数千条base64编码的服务器，需要解base64使用。
+server.txt 本文件不再更新，可自行解码server_base64.txt 中服务器使用。软件未来会更新。自动解码
 
 
 
