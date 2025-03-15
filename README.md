@@ -1,7 +1,7 @@
 # 代理服务器测速与自动连接工具  大雄链（daxionglink）
 
 ## 📌 功能概述
-本工具用于搜索网上公开的服务器资源，并自动测速多协议(vless,vmess,shadowsocks,trojan)代理服务器，选择最快的服务器进行连接。
+本工具使用Github Actions获取公共代理服务器，并自动测速多协议(vless,vmess,shadowsocks,trojan)代理服务器，选择最快的服务器进行连接。
 
 免费高效。支持
 vless 
