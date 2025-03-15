@@ -36,7 +36,8 @@ daxionglink.exe q
 server_base64.txt 12小时更新一次，包含数千条base64编码的服务器，需要解base64使用。
 server.txt 本文件不再更新，可自行解码server_base64.txt 中服务器使用。软件未来会更新。自动解码
 
-
+### bug
+aes-256-cfb 遇到 ss 是这种加密的情况会 报错，删除后可以用
 
 ### 1. 编译(不会编程的最好不要看，浪费时间)
 以下请自行研究。
