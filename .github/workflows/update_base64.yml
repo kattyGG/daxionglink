@@ -37,7 +37,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add server_base64.txt serverlist
+          git add server_base64.txt serverlist.zip
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Update server_base64.txt and serverlist.zip [skip ci]"
             git push
