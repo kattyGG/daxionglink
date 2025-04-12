@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const archiver = require('archiver');      // 引入 archiver 模块
-require('archiver-zip-encrypted');         // 注册加密插件
+// 注册 zip-encrypted 格式
+archiver.registerFormat('zip-encrypted', require('archiver-zip-encrypted'));
 
 // 要获取的订阅文件列表
 const urls = [
