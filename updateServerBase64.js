@@ -96,6 +96,46 @@ async function main() {
   }
 
   console.log("小文件全部生成完毕。");
+
+  //zip文件
+  for (let i = 0; i < uniqueLines.length; i += chunkSize) {
+    const chunkLines = uniqueLines.slice(i, i + chunkSize);
+    if (chunkLines.length === 0) break;
+
+    // 直接拼接成字符串，不进行 Base64 编码
+    const chunkContent = chunkLines.join('\n');
+
+    // 生成带序号的文件名，比如 server_original_01.txt、server_original_02.txt
+    const chunkIndex = Math.floor(i / chunkSize) + 1;
+    const fileName = `server_original_${String(chunkIndex).padStart(2, '0')}.txt`;
+    const filePath = path.join('serverlist', fileName);
+    fs.writeFileSync(filePath, chunkContent, 'utf8');
+    console.log(`已生成：${filePath}`);
+  }
+
+  console.log("小文件全部生成完毕。");
+
+  // 5. 将 serverlist 目录下的所有小文件压缩成一个 zip 文件，并设置密码为 "daxionglink"
+  const zipPath = path.join(__dirname, 'serverlist.zip');
+  const output = fs.createWriteStream(zipPath);
+  const archive = archiver('zip-encrypted', {
+    zlib: { level: 9 },
+    encryptionMethod: 'aes256',
+    password: 'daxionglink'
+  });
+
+  output.on('close', () => {
+    console.log(`压缩文件创建成功，总大小：${archive.pointer()} 字节`);
+  });
+
+  archive.on('error', (err) => {
+    throw err;
+  });
+
+  archive.pipe(output);
+  // 将 serverlist 目录下的所有文件加入压缩包（不包含目录结构）
+  archive.directory('serverlist/', false);
+  await archive.finalize();
 }
 
 main();
