@@ -126,6 +126,8 @@ async function main() {
 
   output.on('close', () => {
     console.log(`压缩文件创建成功，总大小：${archive.pointer()} 字节`);
+    fs.rmSync('serverlist', { recursive: true, force: true });
+    console.log('serverlist 目录及其中所有小文件已删除。');
   });
 
   archive.on('error', (err) => {
